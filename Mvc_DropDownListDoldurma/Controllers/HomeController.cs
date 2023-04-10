@@ -61,5 +61,12 @@ namespace Mvc_DropDownListDoldurma.Controllers
             ViewBag.SecilenSehirId = model.SecilenSehirId;
             return View(model);
         }
+        public JsonResult SehirGetir(int id)
+        {
+          List<Sehir> liste = Sehir.SehirGetir().Where(x=>x.UlkeId == id).ToList();
+           return Json(liste,JsonRequestBehavior.AllowGet);// siteye saldırı olmadığını belirttik.
+                
+
+        }
     }
 }

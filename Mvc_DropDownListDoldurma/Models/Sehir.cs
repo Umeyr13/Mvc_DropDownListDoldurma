@@ -19,7 +19,7 @@ namespace Mvc_DropDownListDoldurma.Models
                 ,new Sehir(){ SehirId=2,SehirAdi= "Ankara",UlkeId=1 }
                 ,new Sehir(){ SehirId=3,SehirAdi= "Floransa",UlkeId=2 }
                 ,new Sehir(){ SehirId=4,SehirAdi= "Roma",UlkeId=2 }
-                ,new Sehir(){ SehirId=5,SehirAdi= "Paris",UlkeId=2 }
+                ,new Sehir(){ SehirId=5,SehirAdi= "Paris",UlkeId=3 }
 
 
             };

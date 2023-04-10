@@ -67,10 +67,36 @@
 
     </div>
 
-    @*Java-Script*@
+    @*Java-Script - Seçilen Ülkeye göre şehir getir.*@
 
     <script>
-        
+        $("SecilenUlkeId").change(function myfunction() {
+
+            var ulkeId = $("SecilenUlkeId").val();//bunun değerini val ile aldık
+            if (ulkeId != -1 || ulkeId != "") {
+                $("SecilenSehirId").not(":first").remove(); // lütefen seçiniz hariç diğer seçenekleri sill
+
+                //done demek doğru birşekilde işlem gerçekleştiyse demek
+                $.ajax({ method: "GET", url: "Home/SehirGetir/" + this.id }).done(function (sonuc) {
+                    var dll = $("SecilenSehirId");
+                    for (var  = 0; < sonuc; ++)
+                {
+                    var id = sonuc[i].SehirId;
+                    var isim = sonuc[i].SehirId;
+                    var opt = $("<option ></option>")
+                    opt.text(isim);
+                    opt.val(id);
+                    ddl.append(opt);
+
+
+                }
+
+
+            }); // sayfayı anlık olarak senkron eder.
+
+            
+
+        };
 
     </script>
 
