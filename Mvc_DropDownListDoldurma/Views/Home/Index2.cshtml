@@ -1,0 +1,80 @@
+﻿@model Mvc_DropDownListDoldurma.Models.ViewModel.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        </div>
+    </div>
+    <h2>DropdownList Doldurma</h2>
+
+    <div class="row">
+
+        <div class="col-md-10 col-md-offset-1">
+            @using (Html.BeginForm())
+            {
+                <div class="Form-horizontal">
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Ulke</label>
+
+                        <div class="col-md-10"> @* sayfada model olduğu için buralarda DropDownListFor u kullandık mode ile yazdırmak için*@
+                            @Html.DropDownListFor(x=>x.SecilenUlkeId, Model.UlkeListesi, "Lütfen seçiniz", new { @class = "form-control dropdown" })
+
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Şehir</label>
+
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x=>x.SecilenSehirId, Model.SehirListesi, "Lütfen seçiniz", new { @class = "form-control dropdown" })
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-10 col-lg-offset-2">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Gönder</button>
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="form-group">
+                        <div class="col-md-10 col-lg-offset-2">
+                            <div class="alert alert-info">
+                                Seçilen Ülke ID:@ViewBag.SecilenUlkeId
+                                <br />
+                                Seçilen Sehir ID:@ViewBag.SecilenSehirId
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+    @*Java-Script*@
+
+    <script>
+        
+
+    </script>
+
+
+
+</body>
+</html>
