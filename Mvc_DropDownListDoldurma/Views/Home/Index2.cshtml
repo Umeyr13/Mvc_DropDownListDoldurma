@@ -70,33 +70,39 @@
     @*Java-Script - Seçilen Ülkeye göre şehir getir.*@
 
     <script>
-        $("SecilenUlkeId").change(function myfunction() {
 
-            var ulkeId = $("SecilenUlkeId").val();//bunun değerini val ile aldık
-            if (ulkeId != -1 || ulkeId != "") {
-                $("SecilenSehirId").not(":first").remove(); // lütefen seçiniz hariç diğer seçenekleri sill
+        $("#SecilenUlkeId").change(function myfunction()
+        {
 
-                //done demek doğru birşekilde işlem gerçekleştiyse demek
-                $.ajax({ method: "GET", url: "Home/SehirGetir/" + this.id }).done(function (sonuc) {
-                    var dll = $("SecilenSehirId");
-                    for (var  = 0; < sonuc; ++)
-                {
-                    var id = sonuc[i].SehirId;
-                    var isim = sonuc[i].SehirId;
-                    var opt = $("<option ></option>")
-                    opt.text(isim);
-                    opt.val(id);
-                    ddl.append(opt);
+            var ulkeId = $("#SecilenUlkeId").val();//bunun değerini val ile aldık   
+            
+            $("#SecilenSehirId option").not(":first").remove(); // lütefen seçiniz, hariç diğer seçeneklerin optionlarını sil
+
+            if (ulkeId != "-1" || ulkeId != "")
+            {//eğer ülke id seçildi ise yani -1 veya boş değişse
+
+                //done demek doğru birşekilde işlem gerçekleştiyse demek. Ggerçekleşirse parantez içini yapar
+                $.ajax({ method: "GET", url: "/Home/SehirGetir/" + ulkeId }).done(function (sonuc) {
+                    var ddl = $("#SecilenSehirId");
+                    for (var i = 0; i< sonuc.length; i++) {
+                        var id = sonuc[i].SehirId;
+                        var isim = sonuc[i].SehirAdi;
+                        var opt = $("<option ></option>")
+                        opt.text(isim);
+                        opt.val(id);
+                        ddl.append(opt);//bu seçeneği append ile dropdown list e ekle demek
+                        
+                    }
 
 
-                }
+                });
+            } // sayfayı anlık olarak senkron eder.
 
-
-            }); // sayfayı anlık olarak senkron eder.
+        });
 
             
 
-        };
+        
 
     </script>
 
